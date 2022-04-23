@@ -1,0 +1,16 @@
+.table-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.table-header {
+  background-color: #14397d;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #77b5d9;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) > * {
+  background-color: #d7eaf3;
+}
