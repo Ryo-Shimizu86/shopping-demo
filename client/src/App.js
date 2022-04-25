@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import { StaffTable } from "./components/StaffTable";
+import { StaffForm } from "./components/StaffForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +23,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 className="title">Staff List 2022</h1>
-        <StaffTable staffs={this.state.staffs} />
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<StaffTable staffs={this.state.staffs} />} />
+          <Route path="/add" element={<StaffForm />} />
+          {/* <div className="App">
+            <h1 className="title">Staff List 2022</h1>
+            <StaffTable staffs={this.state.staffs} />
+            <StaffForm />
+          </div> */}
+        </Routes>
+      </Router>
     );
   }
 }

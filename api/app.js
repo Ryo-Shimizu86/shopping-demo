@@ -22,7 +22,18 @@ liveReloadServer.server.once("connection", () => {
 
 var app = express();
 
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
 app.use(connectLiveReload());
+
+app.use(express.json());
+app.use(express.urlencoded());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

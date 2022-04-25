@@ -1,8 +1,12 @@
 import React from "react";
 import "./StaffTable.css";
 import Table from "react-bootstrap/Table";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export const StaffTable = (props) => {
+  const navigate = useNavigate();
+
   return (
     <div className="table-wrapper">
       <Table striped bordered hover>
@@ -27,6 +31,12 @@ export const StaffTable = (props) => {
           ))}
         </tbody>
       </Table>
+
+      <p>
+        <Button variant="primary" onClick={() => navigate("/add")}>
+          New Staff Member...
+        </Button>
+      </p>
     </div>
   );
 };
