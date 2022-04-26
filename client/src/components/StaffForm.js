@@ -6,6 +6,9 @@ export const StaffForm = (props) => {
   const [formData, setFormData] = useState("");
   const navigate = useNavigate();
 
+  const handleChange = (event) =>
+    setFormData({ [event.target.name]: event.target.value });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(`The first name you entered was: ${formData}`);
@@ -31,7 +34,7 @@ export const StaffForm = (props) => {
             type="text"
             name="name"
             value={formData.name}
-            onChange={(e) => setFormData({ [e.target.name]: e.target.value })}
+            onChange={handleChange}
           />
         </label>
         {/* TODO delete br tag */}
