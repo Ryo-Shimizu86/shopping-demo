@@ -1,3 +1,4 @@
+const dayjs = require("dayjs");
 const express = require("express");
 const router = express.Router();
 const db = require("../database");
@@ -12,9 +13,21 @@ router.get("/list", function (req, res, next) {
 
 router.post("/register", (req, res, next) => {
   console.log(req.body);
-  const sql =
-    "INSERT INTO staff (first_name, last_name, email, username, password, last_update) VALUES (?, 'Shimizu', 'k.shimizu@gmail.com', 'kaede1234', '1234', '2022-04-25 21:15')";
-  db.query(sql, req.body.formData.name, (err, data, fields) => {
+
+  const { firstName, lastName, email, userName, password } = req.body.formData;
+  console.log(firstName, lastName, email, userName, password);
+
+  const staff = {
+    first_name: firstName,
+    last_name: lastName,
+    email: email,
+    username: userName,
+    password: password,
+    last_update: dayjs().format("YYYY-MM-DD h:mm:ss"), // TODO move format variable to common file
+  };
+
+  const sql = "INSERT INTO staff SET ?";
+  db.query(sql, staff, (err, data, fields) => {
     if (err) throw err;
     res.send(data);
     console.log(data);
