@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require("../database");
 
 router.get("/list", function (req, res, next) {
-  const sql = "SELECT * FROM staff";
+  const sql = "SELECT * FROM Staffs";
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.send(data);
@@ -26,7 +26,7 @@ router.post("/register", (req, res, next) => {
     last_update: dayjs().format("YYYY-MM-DD h:mm:ss"), // TODO move format variable to common file
   };
 
-  const sql = "INSERT INTO staff SET ?";
+  const sql = "INSERT INTO Staffs SET ?";
   db.query(sql, staff, (err, data, fields) => {
     if (err) throw err;
     res.send(data);
