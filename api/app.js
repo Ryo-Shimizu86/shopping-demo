@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 
-var staffsRouter = require("./routes/staffs");
+var staffsRouter = require("./src/routes/StaffRoute");
 
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");

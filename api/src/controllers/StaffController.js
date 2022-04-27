@@ -1,17 +1,15 @@
 const dayjs = require("dayjs");
-const express = require("express");
-const router = express.Router();
-const db = require("../config/Database");
+const db = require("../../config/Database");
 
-router.get("/list", function (req, res, next) {
+exports.getStaffList = function (req, res) {
   const sql = "SELECT * FROM Staffs";
   db.query(sql, function (err, data, fields) {
     if (err) throw err;
     res.send(data);
   });
-});
+};
 
-router.post("/register", (req, res, next) => {
+exports.addNewStaff = function (req, res) {
   console.log(req.body);
 
   const { firstName, lastName, email, userName, password } = req.body.formData;
@@ -32,6 +30,4 @@ router.post("/register", (req, res, next) => {
     res.send(data);
     console.log(data);
   });
-});
-
-module.exports = router;
+};
