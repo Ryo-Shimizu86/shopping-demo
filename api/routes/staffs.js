@@ -1,7 +1,7 @@
 const dayjs = require("dayjs");
 const express = require("express");
 const router = express.Router();
-const db = require("../database");
+const db = require("../config/database");
 
 router.get("/list", function (req, res, next) {
   const sql = "SELECT * FROM Staffs";
