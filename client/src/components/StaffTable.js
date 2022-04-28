@@ -22,9 +22,9 @@ export const StaffTable = (props) => {
         <tbody>
           {props.staffs.map((staff) => (
             <tr key={staff.staff_id}>
-              <td>{staff.staff_id}</td>
-              <td>{staff.first_name}</td>
-              <td>{staff.last_name}</td>
+              <td>{staff.id}</td>
+              <td>{staff.firstName}</td>
+              <td>{staff.lastName}</td>
               <td>{staff.email}</td>
               <td>{staff.username}</td>
             </tr>
