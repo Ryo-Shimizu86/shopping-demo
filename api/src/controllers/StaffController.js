@@ -1,5 +1,3 @@
-const dayjs = require("dayjs");
-const db = require("../../config/databaseBk");
 const StaffModel = require("./../models/Staff");
 
 exports.getStaffList = function (req, res) {
