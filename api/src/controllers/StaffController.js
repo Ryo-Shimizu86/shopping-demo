@@ -1,4 +1,5 @@
 const StaffModel = require("./../models/Staff");
+const bcrypt = require("bcrypt");
 
 exports.getStaffList = function (req, res) {
   StaffModel.findAll()
@@ -16,13 +17,14 @@ exports.getStaffList = function (req, res) {
 
 exports.addNewStaff = function (req, res) {
   const { firstName, lastName, email, userName, password } = req.body.formData;
+  const hashedPassword = bcrypt.hashSync(password, 5);
 
   StaffModel.create({
     firstName: firstName,
     lastName: lastName,
     email: email,
     username: userName,
-    password: password,
+    password: hashedPassword,
     createdAt: new Date(),
     updatedAt: new Date(),
   })
