@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 exports.getStaffList = function (req, res) {
   StaffModel.findAll()
     .then((result) => {
-      console.log(result);
       return res.json(result);
     })
     .catch((error) => {
@@ -15,28 +14,39 @@ exports.getStaffList = function (req, res) {
     });
 };
 
-exports.addNewStaff = function (req, res) {
-  const { firstName, lastName, email, userName, password } = req.body.formData;
-  const hashedPassword = bcrypt.hashSync(password, 5);
+exports.addNewStaff = async function (req, res) {
+  console.log(req.body);
 
-  StaffModel.create({
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    username: userName,
-    password: hashedPassword,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  })
-    .then((result) => {
-      return res.json({
-        message: "Record created successfully!",
-      });
+  const { firstName, lastName, email, username, password } = req.body.data;
+
+  const staff = await StaffModel.findOne({
+    where: { email: "r.shimizu1986@gmail.com" },
+  });
+  if (staff === null) {
+    const hashedPassword = bcrypt.hashSync(password, 5);
+    StaffModel.create({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      username: username,
+      password: hashedPassword,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     })
-    .catch((error) => {
-      console.log("error:", error);
-      return res.json({
-        message: "Unable to create a record",
+      .then((result) => {
+        return res.json({
+          message: "Record created successfully!",
+        });
+      })
+      .catch((error) => {
+        console.log("error:", error);
+        return res.json({
+          message: "Unable to create a record",
+        });
       });
+  } else {
+    return res.json({
+      message: "Email is invalid or already taken",
     });
+  }
 };
