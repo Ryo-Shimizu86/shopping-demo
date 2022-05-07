@@ -28,21 +28,6 @@ export const StaffFormBasic = (props) => {
     },
   });
 
-  // const onSubmit = (data) => {
-  //   alert(`Proceed register?`);
-
-  //   fetch("http://localhost:9000/staffs/register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ data }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => console.log(res)) // TODO show error message in screen
-  //     .catch((err) => console.log("error"));
-  // };
-
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

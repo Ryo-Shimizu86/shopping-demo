@@ -30,11 +30,6 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<StaffTable staffs={this.state.staffs} />} />
           <Route path="/add" element={<StaffForm />} />
-          {/* <div className="App">
-            <h1 className="title">Staff List 2022</h1>
-            <StaffTable staffs={this.state.staffs} />
-            <StaffForm />
-          </div> */}
         </Routes>
         <Footer />
       </Router>
