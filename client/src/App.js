@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { StaffTable } from "./components/StaffTable";
 import { StaffForm } from "./components/StaffForm";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 class App extends Component {
@@ -24,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<StaffTable staffs={this.state.staffs} />} />
           <Route path="/add" element={<StaffForm />} />
@@ -33,6 +36,7 @@ class App extends Component {
             <StaffForm />
           </div> */}
         </Routes>
+        <Footer />
       </Router>
     );
   }
