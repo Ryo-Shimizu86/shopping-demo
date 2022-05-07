@@ -20,7 +20,7 @@ exports.addNewStaff = async function (req, res) {
   const { firstName, lastName, email, username, password } = req.body.data;
 
   const staff = await StaffModel.findOne({
-    where: { email: "r.shimizu1986@gmail.com" },
+    where: { email: email },
   });
   if (staff === null) {
     const hashedPassword = bcrypt.hashSync(password, 5);
